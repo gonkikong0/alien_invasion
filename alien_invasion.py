@@ -9,6 +9,8 @@ class AlienInvasion:
         pygame.init()
         self.screen = pygame.display.set_mode((1200, 800))
         pygame.display.set_caption("Alien Invasion")
+        #Default Color : Black, setting up color -
+        self.bg_color = (230, 230, 230)
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -17,11 +19,13 @@ class AlienInvasion:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
+            self.screen.fill(self.bg_color)
 
-            #Makes the most recently drawn screen visible 
+            #Makes the most recently drawn screen visible (The changes to the screen, stay in a buffer --> with .display.flip() it presents the changes on the screen)
             pygame.display.flip()
 
-if __name__ == '__main__':
+if __name__ == '__main__': #Whenever a python file is executed directly the __name__ variable is __main__ !
     #Makes a game instance and runs it -
     ai = AlienInvasion()
     ai.run_game()
+
