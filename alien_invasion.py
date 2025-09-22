@@ -1,6 +1,7 @@
 import sys #Yet to figure out what exactly is SYS
 import pygame
 from settings import Settings
+from ship import Ship
 
 class AlienInvasion:
     """The class manages game assets and behavior."""
@@ -13,6 +14,7 @@ class AlienInvasion:
             self.settings.screen_width, self.settings.screen_height)
         )
         pygame.display.set_caption("Alien Invasion")
+        self.ship = Ship(self)
         #Default Color : Black, setting up color -
         self.screen.fill(self.settings.bg_color)
 
@@ -24,6 +26,7 @@ class AlienInvasion:
                 if event.type == pygame.QUIT:
                     sys.exit()
             self.screen.fill(self.settings.bg_color)
+            self.ship.blitme()
 
             #Makes the most recently drawn screen visible (The changes to the screen, stay in a buffer --> with .display.flip() it presents the changes on the screen)
             pygame.display.flip()
